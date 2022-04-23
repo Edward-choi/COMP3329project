@@ -11,17 +11,17 @@ public class healthBarControl : MonoBehaviour
     public float maxHP, maxMP, currentHP, currentMP, damage, extraDamage = 1, defense = 1f, speed = 2f, permaDamage = 0;
     public int lv;
     private float mpRegenRate = 1f, nextMpRegen = 0f;
-
+   
     PhotonView PV;
     public float xp_show;
 
     private bool willTP = true;
     private static string currentLocation;
-
+   
     // Start is called before the first frame update
     void Start()
     {
-
+        
         xp_show = exp.GetComponent<Image>().fillAmount;
 
         ownGameScore.GetComponent<Text>().text = lungLogic.ownGameScore.ToString();
@@ -40,9 +40,9 @@ public class healthBarControl : MonoBehaviour
         // exp =  GameObject.Find("immue(Clone)/Canvas/Expbar/exp");
         // immueScore = GameObject.Find("immue(Clone)/Canvas/scoreboard/immueTotalScore");
         // bacteriaScore = GameObject.Find("immue(Clone)/Canvas/scoreboard/bacteriaTotalScore");
-        nm.GetComponent<Text>().text = PhotonNetwork.NickName;
+        nm.GetComponent<Text>().text = "Immune";
         exp.GetComponent<Image>().fillAmount = 0f;
-        //nm.GetComponent<Text>().text = this.gameObject.name;
+        nm.GetComponent<Text>().text = this.gameObject.name;
         updateBar();
         lvCount.GetComponent<Text>().text = "1";
     }
@@ -103,10 +103,10 @@ public class healthBarControl : MonoBehaviour
                 LiverLogic.hpToZero();
                 willTP = false;
             }
-
+            
         }
     }
-
+    
 
     void updateBar(){
         hpBar.GetComponent<Image>().fillAmount = currentHP/maxHP;
@@ -192,7 +192,7 @@ public class healthBarControl : MonoBehaviour
         {
             PhotonNetwork.Destroy(bullet);
         }
-
+        
     }
 
 }
